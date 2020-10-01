@@ -180,7 +180,7 @@ public class Main {
                             String select2 = sc.nextLine();
                             switch (select2) {
                                 case "Black Tea", "black tea", "Black tea", "black Tea", "1" -> {
-
+                                    System.out.println("test");
                                 }
                             }
                         }
