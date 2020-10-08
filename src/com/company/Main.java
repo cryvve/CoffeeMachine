@@ -1,7 +1,7 @@
 package com.company;
 
-import java.util.Scanner;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Main {
 
@@ -114,78 +114,63 @@ public class Main {
             if (!action.equals("exit")) {
                 switch (action) {
                     case "buy" -> {
-                        System.out.println("Do you want a coffee (1) or a Tea (2) ?");
-                        String choose = sc.next();
-                        if (choose.equals("coffee") || choose.equals("Coffee") || choose.equals("1")) {
-                            System.out.println("What do you want? We got espresso (1), latte (2), cappuccino (3) or you can go back to main menu (back):");
-                            String select1 = sc.next();
-                            switch (select1) {
-                                case "1", "espresso" -> {
-                                    if (water >= 250 && beans >= 16 && cups >= 1) {
-                                        water -= 250;
-                                        beans -= 16;
-                                        money += 4;
-                                        cups -= 1;
-                                        artwork();
-                                    } else if (water < 250) {
-                                        System.out.println("Sorry, not enough water!");
-                                    } else if (beans < 16) {
-                                        System.out.println("Sorry, not enough beans!");
-                                    } else {
-                                        System.out.println("Sorry, not enough cups!");
-                                    }
-                                }
-                                case "2", "latte" -> {
-                                    if (water >= 350 && milk >= 75 && beans >= 20 && cups >= 1) {
-                                        water -= 350;
-                                        milk -= 75;
-                                        beans -= 20;
-                                        cups -= 1;
-                                        money += 7;
-                                        artwork();
-                                    } else if (water < 350) {
-                                        System.out.println("Sorry, not enough water!");
-                                    } else if (milk < 75) {
-                                        System.out.println("Sorry not enough milk!");
-                                    } else if (beans < 20) {
-                                        System.out.println("Sorry, not enough beans!");
-                                    } else {
-                                        System.out.println("Sorry, not enough cups!");
-                                    }
-                                }
-                                case "3", "cappuccino" -> {
-                                    if (water >= 200 && milk >= 100 && beans >= 12 && cups >= 1) {
-                                        water -= 200;
-                                        milk -= 100;
-                                        beans -= 12;
-                                        cups -= 1;
-                                        money += 6;
-                                        artwork();
-                                    } else if (water < 200) {
-                                        System.out.println("Sorry, not enough water!");
-                                    } else if (milk < 100) {
-                                        System.out.println("Sorry not enough milk!");
-                                    } else if (beans < 12) {
-                                        System.out.println("Sorry, not enough beans!");
-                                    } else {
-                                        System.out.println("Sorry, not enough cups!");
-                                    }
-                                }
-                                case "back" -> {
-                                }
-                                default -> System.out.println("Invalid input. Try again.");
-                            }
-                        } else if (choose.equals("tea") || (choose.equals("Tea")) || choose.equals("2")) {
-                            System.out.println("What do you want? We got Black Tea (1) and Ice Tea (2)");
-                            String select2 = sc.nextLine();
-                            switch (select2) {
-                                case "Black Tea", "black tea", "Black tea", "black Tea", "1" -> {
-                                    System.out.println("test");
+                        System.out.println("What do you want? We got espresso (1), latte (2), cappuccino (3) or you can go back to main menu (back):");
+                        String select1 = sc.next();
+                        switch (select1) {
+                            case "1", "espresso" -> {
+                                if (water >= 250 && beans >= 16 && cups >= 1) {
+                                    water -= 250;
+                                    beans -= 16;
+                                    money += 4;
+                                    cups -= 1;
+                                    artwork();
+                                } else if (water < 250) {
+                                    System.out.println("Sorry, not enough water!");
+                                } else if (beans < 16) {
+                                    System.out.println("Sorry, not enough beans!");
+                                } else {
+                                    System.out.println("Sorry, not enough cups!");
                                 }
                             }
-                        }
-                        else {
-                            System.out.println("Invalid input. Try again.");
+                            case "2", "latte" -> {
+                                if (water >= 350 && milk >= 75 && beans >= 20 && cups >= 1) {
+                                    water -= 350;
+                                    milk -= 75;
+                                    beans -= 20;
+                                    cups -= 1;
+                                    money += 7;
+                                    artwork();
+                                } else if (water < 350) {
+                                    System.out.println("Sorry, not enough water!");
+                                } else if (milk < 75) {
+                                    System.out.println("Sorry not enough milk!");
+                                } else if (beans < 20) {
+                                    System.out.println("Sorry, not enough beans!");
+                                } else {
+                                    System.out.println("Sorry, not enough cups!");
+                                }
+                            }
+                            case "3", "cappuccino" -> {
+                                if (water >= 200 && milk >= 100 && beans >= 12 && cups >= 1) {
+                                    water -= 200;
+                                    milk -= 100;
+                                    beans -= 12;
+                                    cups -= 1;
+                                    money += 6;
+                                    artwork();
+                                } else if (water < 200) {
+                                    System.out.println("Sorry, not enough water!");
+                                } else if (milk < 100) {
+                                    System.out.println("Sorry not enough milk!");
+                                } else if (beans < 12) {
+                                    System.out.println("Sorry, not enough beans!");
+                                } else {
+                                    System.out.println("Sorry, not enough cups!");
+                                }
+                            }
+                            case "back" -> {
+                            }
+                            default -> System.out.println("Invalid input. Try again.");
                         }
                     }
                     case "fill" -> {
