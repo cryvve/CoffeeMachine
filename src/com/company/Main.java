@@ -3,16 +3,19 @@ package com.company;
 import java.util.Random;
 import java.util.Scanner;
 
+
 public class Main {
+    Scanner sc = new Scanner(System.in);
+    Random rand = new Random();
 
-    static int water = 400;
-    static int milk = 540;
-    static int beans = 120;
-    static int cups = 9;
-    static int money = 550;
-    static boolean exit = false;
+    int water = 400;
+    int milk = 540;
+    int beans = 120;
+    int cups = 9;
+    int money = 550;
+    boolean exit = false;
 
-    public static void stats() {
+    public void stats() {
         System.out.println("The coffee machine has:");
         System.out.println(water + " of water");
         System.out.println(milk + " of milk");
@@ -21,9 +24,7 @@ public class Main {
         System.out.println("$" + money + " of money");
     }
 
-    public static void artwork() {
-
-        Random rand = new Random();
+    public void artwork() {
 
         int num = rand.nextInt(4);
         System.out.println("I have enough resources, making you a coffee!\n");
@@ -103,7 +104,26 @@ public class Main {
         System.out.println("Here`s your Coffee!\n");
     }
 
-    public static void main(String[] args) {
+    public void changeStats (int currentWater, int currentMilk, int currentBeans, int currentMoney){
+        water -= currentWater;
+        milk -= currentMilk;
+        beans -= currentBeans;
+        money += currentMoney;
+        cups -= 1;
+    }
+
+    public void fill(){
+        System.out.println("Write how many ml of water do you want to add:");
+        water += sc.nextInt();
+        System.out.println("Write how many ml of milk do you want to add:");
+        milk += sc.nextInt();
+        System.out.println("Write how many grams of coffee beans do you want to add:");
+        beans += sc.nextInt();
+        System.out.println("Write how many disposable cups of coffee do you want to add:");
+        cups += sc.nextInt();
+    }
+
+    public void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Hello I'm Carl your virtual Coffee Machine.\n");
@@ -119,90 +139,42 @@ public class Main {
                         switch (select1) {
                             case "1", "espresso" -> {
                                 if (water >= 250 && beans >= 16 && cups >= 1) {
-                                    water -= 250;
-                                    beans -= 16;
-                                    money += 4;
-                                    cups -= 1;
-                                    artwork();
-                                } else if (water < 250) {
-                                    System.out.println("Sorry, not enough water!");
-                                } else if (beans < 16) {
-                                    System.out.println("Sorry, not enough beans!");
-                                } else {
-                                    System.out.println("Sorry, not enough cups!");
-                                }
+                                    changeStats(250, 0, 16, 4);
+                                    artwork(); }
+                                else if (water < 250) System.out.println("Sorry, not enough water!");
+                                else if (beans < 16) System.out.println("Sorry, not enough beans!");
+                                else System.out.println("Sorry, not enough cups!");
                             }
                             case "2", "latte" -> {
                                 if (water >= 350 && milk >= 75 && beans >= 20 && cups >= 1) {
-                                    water -= 350;
-                                    milk -= 75;
-                                    beans -= 20;
-                                    cups -= 1;
-                                    money += 7;
-                                    artwork();
-                                } else if (water < 350) {
-                                    System.out.println("Sorry, not enough water!");
-                                } else if (milk < 75) {
-                                    System.out.println("Sorry not enough milk!");
-                                } else if (beans < 20) {
-                                    System.out.println("Sorry, not enough beans!");
-                                } else {
-                                    System.out.println("Sorry, not enough cups!");
-                                }
+                                    changeStats(350,75,20,7);
+                                    artwork(); }
+                                else if (water < 350) System.out.println("Sorry, not enough water!");
+                                else if (milk < 75) System.out.println("Sorry not enough milk!");
+                                else if (beans < 20) System.out.println("Sorry, not enough beans!");
+                                else System.out.println("Sorry, not enough cups!");
                             }
                             case "3", "cappuccino" -> {
                                 if (water >= 200 && milk >= 100 && beans >= 12 && cups >= 1) {
-                                    water -= 200;
-                                    milk -= 100;
-                                    beans -= 12;
-                                    cups -= 1;
-                                    money += 6;
-                                    artwork();
-                                } else if (water < 200) {
-                                    System.out.println("Sorry, not enough water!");
-                                } else if (milk < 100) {
-                                    System.out.println("Sorry not enough milk!");
-                                } else if (beans < 12) {
-                                    System.out.println("Sorry, not enough beans!");
-                                } else {
-                                    System.out.println("Sorry, not enough cups!");
-                                }
+                                    changeStats(200,100,12,6);
+                                    artwork(); }
+                                else if (water < 200) System.out.println("Sorry, not enough water!");
+                                else if (milk < 100) System.out.println("Sorry not enough milk!");
+                                else if (beans < 12) System.out.println("Sorry, not enough beans!");
+                                else System.out.println("Sorry, not enough cups!");
                             }
-                            case "back" -> {
-                            }
+                            case "back" -> {}
                             default -> System.out.println("Invalid input. Try again.");
                         }
                     }
-                    case "fill" -> {
-                        System.out.println("Insert your password:");
-                        String pwFill = sc.next();
-                        if (pwFill.equals("1234")) {
-                            System.out.println("Correct Password!");
-                            System.out.println("Write how many ml of water do you want to add:");
-                            int fillWater = sc.nextInt();
-                            water += fillWater;
-                            System.out.println("Write how many ml of milk do you want to add:");
-                            int fillMilk = sc.nextInt();
-                            milk += fillMilk;
-                            System.out.println("Write how many grams of coffee beans do you want to add:");
-                            int fillBeans = sc.nextInt();
-                            beans += fillBeans;
-                            System.out.println("Write how many disposable cups of coffee do you want to add:");
-                            int fillCups = sc.nextInt();
-                            cups += fillCups;
-                        } else {
-                            System.out.println("Incorrect Password!");
-                        }
-                    }
+                    case "fill" -> fill();
                     case "take" -> {
                         System.out.println("Insert your password:");
                         String pwTake = sc.next();
                         if (pwTake.equals("1234")) {
                             System.out.println("I gave you $" + money);
-                            money = 0;
-                        } else {
-                            System.out.println("Incorrect Password!");
-                        }
+                            money = 0; }
+                        else System.out.println("Incorrect Password!");
                     }
                     case "remaining" -> stats();
                     default -> System.out.println("Invalid input. Try again.");
