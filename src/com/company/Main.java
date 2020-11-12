@@ -14,6 +14,8 @@ public class Main {
     static int cups = 9;
     static int money = 550;
     static boolean exit = false;
+    static String[] select;
+    static String[] teaFlavors = {"White Tea", "Green Tea", "Black Tea", "Christmas Tea"};
 
     public static void stats() {
         System.out.println("The coffee machine has:");
@@ -159,19 +161,23 @@ public class Main {
 
         while (!exit) {
             System.out.println("What can i do for you? (buy, fill, take, remaining, exit):");
-            String action = sc.next();
-            if (!action.equals("exit")) {
-                switch (action) {
+            select[0] = sc.next();
+            if (!select[0].equals("exit")) {
+                switch (select[0]) {
                     case "buy" -> {
                         System.out.println("Do you want a Tea (1) or a Coffee (2):");
-                        String select1 = sc.next();
-                        if (select1.equals("1") || select1.equals("Tea") || select1.equals("tea")) {
+                        select[1] = sc.next();
+                        if (select[1].equals("1") || select[1].equals("Tea") || select[1].equals("tea")) {
+                            System.out.println("What flavor of Tea do you want? We got White Tea (1), Green Tea (2), Black Tea (3) and Christmas Tea (4)");
+                            select[3] = sc.next();
+                            switch (select[3]) {
 
+                            }
                         }
                         else {
                             System.out.println("What do you want? We got espresso (1), latte (2), cappuccino (3) or you can go back to main menu (back):");
-                            String select2 = sc.next();
-                            switch (select2) {
+                            select[2] = sc.next();
+                            switch (select[2]) {
                                 case "1", "espresso" -> {
                                     if (water >= 250 && beans >= 16 && cups >= 1) {
                                         changeStats(250, 0, 16, 4);
