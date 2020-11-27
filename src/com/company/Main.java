@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Main {
     static Scanner sc = new Scanner(System.in);
     static Random rand = new Random();
-
+ // improve if statement (main) + git push
 
     static int water = 400;
     static int milk = 540;
@@ -22,7 +22,7 @@ public class Main {
     static int[] staticMoney = {4, 7, 6};
 
 
-    public static void stats() {
+    public static void remaining() {
         System.out.println("The coffee machine has:");
         System.out.println(water + " of water");
         System.out.println(milk + " of milk");
@@ -199,25 +199,28 @@ public class Main {
         System.out.println("Hello I'm Carl your virtual Coffee Machine.\n");
 
         while (!exit) {
-            System.out.println("What can i do for you? (buy, fill, take, remaining, exit):");
+            System.out.println("What can i do for you? (buy (1), fill (2), take (3), remaining (4), exit):");
             select = sc.next();
+            select = select.toLowerCase();
             if (!select.equals("exit")) {
                 switch (select) {
-                    case "buy" -> {
+                    case "1", "buy" -> {
                         System.out.println("Do you want a Tea (1) or a Coffee (2):");
                         select = sc.next();
-                        if (select.equals("1") || select.equals("Tea") || select.equals("tea")) {
+                        select = select.toLowerCase();
+                        if (select.equals("1") || select.equals("tea")) {
                             System.out.println("What flavor of Tea do you want? We got Green Tea (1), Black Tea (2) and Christmas Tea (3)");
                             select = sc.next();
                             switch (select) {
-                                case "1", "Green Tea", "green Tea", "Green tea", "green tea" -> Tea(0);
-                                case "2", "Black Tea", "black Tea", "Black tea", "black tea" -> Tea(1);
-                                case "3", "Christmas Tea", "christmas Tea", "Christmas tea", "christmas tea" -> Tea(2);
+                                case "1", "green tea" -> Tea(0);
+                                case "2", "black tea" -> Tea(1);
+                                case "3", "christmas tea" -> Tea(2);
                             }
                         }
                         else {
                             System.out.println("What do you want? We got espresso (1), latte (2), cappuccino (3) or you can go back to main menu (back):");
                             select = sc.next();
+                            select = select.toLowerCase();
                             switch (select) {
                                 case "1", "espresso" -> Coffee(0);
                                 case "2", "latte" -> Coffee(1);
@@ -228,12 +231,12 @@ public class Main {
                             }
                         }
                     }
-                    case "fill" -> fill();
-                    case "take" -> {
+                    case "2", "fill" -> fill();
+                    case "3", "take" -> {
                             System.out.println("I gave you $" + money);
                             money = 0;
                     }
-                    case "remaining" -> stats();
+                    case "4", "remaining" -> remaining();
                     default -> System.out.println("Invalid input. Try again.");
                 }
             } else {
