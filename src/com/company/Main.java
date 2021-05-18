@@ -196,7 +196,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("Hello I'm Carl your virtual Coffee Machine.\n");
+        System.out.println("Hello I'm Carl your virtual Coffee Machine.");
 
         while (!exit) {
             System.out.println("What can i do for you? (buy (1), fill (2), take (3), remaining (4), exit):");
